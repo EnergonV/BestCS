@@ -1,0 +1,382 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectGuid>{C85BC9C0-4B65-4F38-9A0B-A0282B9660B1}</ProjectGuid>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <RootNamespace>BestCS</RootNamespace>
+    <AssemblyName>BestCS.Controls</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <NoWin32Manifest>False</NoWin32Manifest>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <NoStdLib>False</NoStdLib>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <DocumentationFile>..\..\bin\Release\BestCS.AForge.xml</DocumentationFile>
+    <DelaySign>False</DelaySign>
+    <AssemblyOriginatorKeyMode>File</AssemblyOriginatorKeyMode>
+    <AssemblyOriginatorKeyFile>..\BestCSpair.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <BaseAddress>4194304</BaseAddress>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <FileAlignment>4096</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>..\..\bin\Release\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <Optimize>True</Optimize>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <OutputPath>..\..\bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>True</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <DocumentationFile>..\..\bin\BestCS.Controls.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <RunCodeAnalysis>False</RunCodeAnalysis>
+    <DocumentationFile>..\..\bin\BestCS.Controls.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SharpDX">
+      <HintPath>dependencies\SharpDX\net40\SharpDX.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.DirectSound">
+      <HintPath>dependencies\SharpDX\net40\SharpDX.DirectSound.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Collections.Concurrent">
+      <HintPath>..\..\Netframework4.5\v4.0.30319\System.Collections.Concurrent.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel">
+      <HintPath>..\..\Netframework4.5\v4.0.30319\System.ComponentModel.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Threading">
+      <HintPath>..\..\Netframework4.5\v4.0.30319\System.Threading.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="Controls\AngleBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\AngleBox.Designer.cs" />
+    <Compile Include="Controls\Bindings\ArrayDataView.cs" />
+    <Compile Include="Controls\Bindings\ArrayPropertyDescriptor.cs" />
+    <Compile Include="Controls\Bindings\ArrayRowView.cs" />
+    <Compile Include="Controls\Bindings\ConfusionMatrixPropertyDescriptor.cs" />
+    <Compile Include="Controls\Bindings\ConfusionMatrixRowView.cs" />
+    <Compile Include="Controls\Bindings\ConfusionMatrixView.cs" />
+    <Compile Include="Controls\Bindings\RowNamePropertyDescriptor.cs" />
+    <Compile Include="Controls\Boxes\DataBarBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Boxes\DataBarBox.Designer.cs" />
+    <Compile Include="Controls\Boxes\DataGridBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Boxes\DataGridBox.Designer.cs" />
+    <Compile Include="Controls\Boxes\DataSeriesBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Boxes\DataSeriesBox.Designer.cs" />
+    <Compile Include="Controls\Boxes\HistogramBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Boxes\HistogramBox.Designer.cs" />
+    <Compile Include="Controls\Boxes\ScatterplotBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Boxes\ScatterplotBox.Designer.cs" />
+    <Compile Include="Controls\Chart.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ColorSequenceCollection.cs" />
+    <Compile Include="Controls\ColorSlider.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Converters\RangeTypeConverter.cs" />
+    <Compile Include="Controls\DenavitHartenbergViewer.cs" />
+    <Compile Include="Controls\Editors\NumericCollectionEditor.cs" />
+    <Compile Include="Controls\Editors\NumericCollectionEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Editors\NumericCollectionEditorForm.Designer.cs" />
+    <Compile Include="Controls\Extensions.cs" />
+    <Compile Include="Controls\FaceController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FaceEventArgs.cs" />
+    <Compile Include="Controls\FaceMovements.cs" />
+    <Compile Include="Controls\GlobalSuppressions.cs" />
+    <Compile Include="Controls\HeadController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\HeadEventArgs.cs" />
+    <Compile Include="Controls\HeadMovements.cs" />
+    <Compile Include="Controls\Histogram.cs" />
+    <Compile Include="Controls\HuePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ImageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\ImageBox.Designer.cs" />
+    <Compile Include="Controls\Joystick.cs" />
+    <Compile Include="Controls\JoystickAPI.cs" />
+    <Compile Include="Controls\ManipulatorControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ManipulatorControl.Designer.cs" />
+    <Compile Include="Controls\PictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\PointBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\PointBox.Designer.cs" />
+    <Compile Include="Controls\SliderControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SliderControl.Designer.cs" />
+    <Compile Include="Controls\SortableBindingList\PropertyComparer.cs" />
+    <Compile Include="Controls\SortableBindingList\SortableBindingList.cs" />
+    <Compile Include="Controls\Tools.cs" />
+    <Compile Include="Controls\VideoSourcePlayer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\VideoSourcePlayer.Designer.cs" />
+    <Compile Include="Controls\Views\ComponentView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Views\ComponentView.Designer.cs" />
+    <Compile Include="Controls\Views\DecisionTreeView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Views\DecisionTreeView.Designer.cs" />
+    <Compile Include="Controls\Views\HistogramView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Views\HistogramView.designer.cs" />
+    <Compile Include="Controls\Views\ScatterplotView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Views\ScatterplotView.Designer.cs" />
+    <Compile Include="Controls\Wavechart.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\WavechartBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\WavechartBox.Designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ZedGraph\ArrowObj.cs" />
+    <Compile Include="ZedGraph\Axis.cs" />
+    <Compile Include="ZedGraph\AxisLabel.cs" />
+    <Compile Include="ZedGraph\Bar.cs" />
+    <Compile Include="ZedGraph\BarItem.cs" />
+    <Compile Include="ZedGraph\BarSettings.cs" />
+    <Compile Include="ZedGraph\BasicArrayPointList.cs" />
+    <Compile Include="ZedGraph\Border.cs" />
+    <Compile Include="ZedGraph\BoxObj.cs" />
+    <Compile Include="ZedGraph\Chart.cs" />
+    <Compile Include="ZedGraph\CollectionPlus.cs" />
+    <Compile Include="ZedGraph\ColorSymbolRotator.cs" />
+    <Compile Include="ZedGraph\CurveItem.cs" />
+    <Compile Include="ZedGraph\CurveList.cs" />
+    <Compile Include="ZedGraph\DataSourcePointList.cs" />
+    <Compile Include="ZedGraph\DateAsOrdinalScale.cs" />
+    <Compile Include="ZedGraph\DateScale.cs" />
+    <Compile Include="ZedGraph\EllipseObj.cs" />
+    <Compile Include="ZedGraph\ErrorBar.cs" />
+    <Compile Include="ZedGraph\ErrorBarItem.cs" />
+    <Compile Include="ZedGraph\ExponentScale.cs" />
+    <Compile Include="ZedGraph\Fill.cs" />
+    <Compile Include="ZedGraph\FilteredPointList.cs" />
+    <Compile Include="ZedGraph\FontSpec.cs" />
+    <Compile Include="ZedGraph\GapLabel.cs" />
+    <Compile Include="ZedGraph\GasGaugeNeedle.cs" />
+    <Compile Include="ZedGraph\GasGaugeRegion.cs" />
+    <Compile Include="ZedGraph\GraphObj.cs" />
+    <Compile Include="ZedGraph\GraphObjList.cs" />
+    <Compile Include="ZedGraph\GraphPane.cs" />
+    <Compile Include="ZedGraph\HiLowBar.cs" />
+    <Compile Include="ZedGraph\HiLowBarItem.cs" />
+    <Compile Include="ZedGraph\HSBColor.cs" />
+    <Compile Include="ZedGraph\ImageObj.cs" />
+    <Compile Include="ZedGraph\IPointList.cs" />
+    <Compile Include="ZedGraph\IPointListEdit.cs" />
+    <Compile Include="ZedGraph\JapaneseCandleStick.cs" />
+    <Compile Include="ZedGraph\JapaneseCandleStickItem.cs" />
+    <Compile Include="ZedGraph\Label.cs" />
+    <Compile Include="ZedGraph\Legend.cs" />
+    <Compile Include="ZedGraph\Line.cs" />
+    <Compile Include="ZedGraph\LinearAsOrdinalScale.cs" />
+    <Compile Include="ZedGraph\LinearScale.cs" />
+    <Compile Include="ZedGraph\LineBase.cs" />
+    <Compile Include="ZedGraph\LineItem.cs" />
+    <Compile Include="ZedGraph\LineObj.cs" />
+    <Compile Include="ZedGraph\Link.cs" />
+    <Compile Include="ZedGraph\Location.cs" />
+    <Compile Include="ZedGraph\LogScale.cs" />
+    <Compile Include="ZedGraph\MajorGrid.cs" />
+    <Compile Include="ZedGraph\MajorTic.cs" />
+    <Compile Include="ZedGraph\Margin.cs" />
+    <Compile Include="ZedGraph\MasterPane.cs" />
+    <Compile Include="ZedGraph\MinorGrid.cs" />
+    <Compile Include="ZedGraph\MinorTic.cs" />
+    <Compile Include="ZedGraph\NoDupePointList.cs" />
+    <Compile Include="ZedGraph\OHLCBar.cs" />
+    <Compile Include="ZedGraph\OHLCBarItem.cs" />
+    <Compile Include="ZedGraph\OrdinalScale.cs" />
+    <Compile Include="ZedGraph\PaneBase.cs" />
+    <Compile Include="ZedGraph\PaneLayoutMgr.cs" />
+    <Compile Include="ZedGraph\PaneList.cs" />
+    <Compile Include="ZedGraph\PieItem.cs" />
+    <Compile Include="ZedGraph\PointD.cs" />
+    <Compile Include="ZedGraph\PointPair.cs" />
+    <Compile Include="ZedGraph\PointPair4.cs" />
+    <Compile Include="ZedGraph\PointPairBase.cs" />
+    <Compile Include="ZedGraph\PointPairCV.cs" />
+    <Compile Include="ZedGraph\PointPairList.cs" />
+    <Compile Include="ZedGraph\PolyObj.cs" />
+    <Compile Include="ZedGraph\RadarPointList.cs" />
+    <Compile Include="ZedGraph\RollingPointPairList.cs" />
+    <Compile Include="ZedGraph\SampleMultiPointList.cs" />
+    <Compile Include="ZedGraph\SamplePointList.cs" />
+    <Compile Include="ZedGraph\Scale.cs" />
+    <Compile Include="ZedGraph\ScaleState.cs" />
+    <Compile Include="ZedGraph\ScaleStateList.cs" />
+    <Compile Include="ZedGraph\ScrollRange.cs" />
+    <Compile Include="ZedGraph\ScrollRangeList.cs" />
+    <Compile Include="ZedGraph\Selection.cs" />
+    <Compile Include="ZedGraph\StickItem.cs" />
+    <Compile Include="ZedGraph\StockPointList.cs" />
+    <Compile Include="ZedGraph\StockPt.cs" />
+    <Compile Include="ZedGraph\Symbol.cs" />
+    <Compile Include="ZedGraph\TextObj.cs" />
+    <Compile Include="ZedGraph\TextScale.cs" />
+    <Compile Include="ZedGraph\Types.cs" />
+    <Compile Include="ZedGraph\ValueHandler.cs" />
+    <Compile Include="ZedGraph\X2Axis.cs" />
+    <Compile Include="ZedGraph\XAxis.cs" />
+    <Compile Include="ZedGraph\XDate.cs" />
+    <Compile Include="ZedGraph\Y2Axis.cs" />
+    <Compile Include="ZedGraph\Y2AxisList.cs" />
+    <Compile Include="ZedGraph\YAxis.cs" />
+    <Compile Include="ZedGraph\YAxisList.cs" />
+    <Compile Include="ZedGraph\ZedGraphControl.ContextMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ZedGraph\ZedGraphControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ZedGraph\ZedGraphControl.Designer.cs" />
+    <Compile Include="ZedGraph\ZedGraphControl.Events.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ZedGraph\ZedGraphControl.Printing.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ZedGraph\ZedGraphControl.Properties.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ZedGraph\ZedGraphControl.ScrollBars.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ZedGraph\ZedGraphException.cs" />
+    <Compile Include="ZedGraph\ZoomState.cs" />
+    <Compile Include="ZedGraph\ZoomStateStack.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="BestCSFramework.pfx" />
+    <None Include="Controls\Images\histogram.jpg" />
+    <None Include="Controls\Images\hue_picker1.png" />
+    <None Include="Controls\Images\hue_picker2.png" />
+    <None Include="Controls\Images\manipulator_round.png" />
+    <None Include="Controls\Images\manipulator_square.png" />
+    <None Include="Controls\Images\slider_control.png" />
+    <None Include="Controls\Images\slider_gradient.png" />
+    <None Include="Controls\Images\slider_inner_gradient.png" />
+    <None Include="Controls\Images\slider_outer_gradient.png" />
+    <None Include="Controls\Images\slider_threshold.png" />
+    <None Include="Controls\Resources\arrow.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\Boxes\DataBarBox.resx" />
+    <EmbeddedResource Include="Controls\Boxes\DataGridBox.resx" />
+    <EmbeddedResource Include="Controls\Boxes\DataSeriesBox.resx" />
+    <EmbeddedResource Include="Controls\Boxes\HistogramBox.resx" />
+    <EmbeddedResource Include="Controls\Boxes\ScatterplotBox.resx" />
+    <EmbeddedResource Include="Controls\Chart.resx" />
+    <EmbeddedResource Include="Controls\ColorSlider.resx" />
+    <EmbeddedResource Include="Controls\Editors\NumericCollectionEditorForm.resx" />
+    <EmbeddedResource Include="Controls\Histogram.resx" />
+    <EmbeddedResource Include="Controls\HuePicker.resx" />
+    <EmbeddedResource Include="Controls\ImageBox.resx" />
+    <EmbeddedResource Include="Controls\ManipulatorControl.resx" />
+    <EmbeddedResource Include="Controls\SliderControl.resx" />
+    <EmbeddedResource Include="Controls\VideoSourcePlayer.resx" />
+    <EmbeddedResource Include="Controls\Views\ComponentView.resx" />
+    <EmbeddedResource Include="Controls\Views\DecisionTreeView.resx" />
+    <EmbeddedResource Include="Controls\Views\HistogramView.resx" />
+    <EmbeddedResource Include="Controls\Views\ScatterplotView.resx" />
+    <EmbeddedResource Include="Controls\WavechartBox.resx" />
+    <EmbeddedResource Include="ZedGraph\ZedGraphControl.resx">
+      <DependentUpon>ZedGraphControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ZedGraph\ZedGraphLocale.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BestCS_Core\Core.csproj">
+      <Project>{931374BD-64A4-4124-8F0F-3231F600D223}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BestCS_MM\MM.csproj">
+      <Project>{EBF173A5-18BA-4F47-96C5-23DE02A41D7B}</Project>
+      <Name>MM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BestCS_Robotics\Robotics.csproj">
+      <Project>{D31AF1EF-166F-436A-A6E6-05752E3E44A6}</Project>
+      <Name>Robotics</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

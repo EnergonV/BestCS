@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{70ADBD0F-0AF1-4ADE-98FC-55AEE41ADBCD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SqlConsoleProvider</RootNamespace>
+    <AssemblyName>BestCS.PostgreSqlProvider</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <NoWin32Manifest>False</NoWin32Manifest>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <NoStdLib>False</NoStdLib>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <SourceAnalysisOverrideSettingsFile>C:\Users\vital_000\AppData\Roaming\ICSharpCode\SharpDevelop5\Settings.SourceAnalysis</SourceAnalysisOverrideSettingsFile>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\BestCSpair.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>False</DelaySign>
+    <AssemblyOriginatorKeyMode>File</AssemblyOriginatorKeyMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>PdbOnly</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <BaseAddress>4194304</BaseAddress>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\EntityFramework\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Services">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PostgreSqlConsoleProvider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PSql\EF\NpgsqlConnectionFactory.cs" />
+    <Compile Include="PSql\EF\NpgsqlMigrationSqlGenerator.cs" />
+    <Compile Include="PSql\EF\NpgsqlProviderManifest.cs" />
+    <Compile Include="PSql\EF\NpgsqlServices.cs" />
+    <Compile Include="PSql\EF\SqlGenerators\PendingProjectsNode.cs" />
+    <Compile Include="PSql\EF\SqlGenerators\SqlBaseGenerator.cs" />
+    <Compile Include="PSql\EF\SqlGenerators\SqlDeleteGenerator.cs" />
+    <Compile Include="PSql\EF\SqlGenerators\SqlInsertGenerator.cs" />
+    <Compile Include="PSql\EF\SqlGenerators\SqlSelectGenerator.cs" />
+    <Compile Include="PSql\EF\SqlGenerators\SqlUpdateGenerator.cs" />
+    <Compile Include="PSql\EF\SqlGenerators\StringPair.cs" />
+    <Compile Include="PSql\EF\SqlGenerators\VisitedExpression.cs" />
+    <Compile Include="PSql\NpgsqlTypes\ArrayHandling.cs" />
+    <Compile Include="PSql\NpgsqlTypes\BitString.cs" />
+    <Compile Include="PSql\NpgsqlTypes\DateDatatypes.cs" />
+    <Compile Include="PSql\NpgsqlTypes\ExpectedTypeConverter.cs" />
+    <Compile Include="PSql\NpgsqlTypes\FastConverter.cs" />
+    <Compile Include="PSql\NpgsqlTypes\FastPath.cs" />
+    <Compile Include="PSql\NpgsqlTypes\FastPathArg.cs" />
+    <Compile Include="PSql\NpgsqlTypes\LargeObject.cs" />
+    <Compile Include="PSql\NpgsqlTypes\LargeObjectManager.cs" />
+    <Compile Include="PSql\NpgsqlTypes\NpgsqlDbType.cs" />
+    <Compile Include="PSql\NpgsqlTypes\NpgsqlNativeToBackendOptions.cs" />
+    <Compile Include="PSql\NpgsqlTypes\NpgsqlTypeConvBackendToNative.cs" />
+    <Compile Include="PSql\NpgsqlTypes\NpgsqlTypeConvNativeToBackend.cs" />
+    <Compile Include="PSql\NpgsqlTypes\NpgsqlTypeInfoBackend.cs" />
+    <Compile Include="PSql\NpgsqlTypes\NpgsqlTypeInfoNative.cs" />
+    <Compile Include="PSql\NpgsqlTypes\NpgsqlTypeMappings.cs" />
+    <Compile Include="PSql\NpgsqlTypes\NpgsqlTypes.cs" />
+    <Compile Include="PSql\NpgsqlTypes\NpgsqlTypesHelper.cs" />
+    <Compile Include="PSql\Npgsql\ASCIIBytes.cs" />
+    <Compile Include="PSql\Npgsql\BackendEncoding.cs" />
+    <Compile Include="PSql\Npgsql\Cache.cs" />
+    <Compile Include="PSql\Npgsql\HashAlgorithm.cs" />
+    <Compile Include="PSql\Npgsql\MD5.cs" />
+    <Compile Include="PSql\Npgsql\MD5CryptoServiceProvider.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlAsciiRow.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlBackEndKeyData.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlBind.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlCancelRequest.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlClosedState.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlCommand.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PSql\Npgsql\NpgsqlCommand.PrepareExecute.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PSql\Npgsql\NpgsqlCommand.Rewrite.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PSql\Npgsql\NpgsqlCommandBuilder.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PSql\Npgsql\NpgsqlConnectedState.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlConnection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PSql\Npgsql\NpgsqlConnectionStringBuilder.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlConnector.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlConnectorPool.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlCopyFormat.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlCopyIn.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlCopyInState.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlCopyInStream.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlCopyOut.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlCopyOutState.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlCopyOutStream.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlCopySerializer.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlDataAdapter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PSql\Npgsql\NpgsqlDataReader.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlDescribe.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlError.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlEventLog.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlException.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlExecute.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlFactory.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlFlush.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlMediator.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlMessageTypes.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlNotificationEventArgs.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlParameter.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlParameterCollection.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlParameterStatus.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlParse.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlPasswordPacket.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlPromotableSinglePhaseNotification.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlQuery.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlReadyState.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlResourceManager.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlRow.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlRowDescription.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlSchema.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlStartupPacket.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlStartupState.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlState.BackendResponse.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlState.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlSync.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlTransaction.cs" />
+    <Compile Include="PSql\Npgsql\NpgsqlTransactionCallbacks.cs" />
+    <Compile Include="PSql\Npgsql\PGUtil.cs" />
+    <Compile Include="PSql\Npgsql\SSPIHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PSql\EF\.vs\BestCS.EF6.PostgreSqlClient\v14\.suo" />
+    <None Include="PSql\EF\install.ps1" />
+    <None Include="PSql\EF\NpgsqlProviderManifest.Manifest.xml" />
+    <None Include="PSql\EF\NpgsqlSchema.msl" />
+    <None Include="PSql\EF\NpgsqlSchema.ssdl" />
+    <None Include="PSql\EF\NpgsqlSchemaV3.ssdl" />
+    <None Include="PSql\Npgsql\NpgsqlMetaData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BestCS.DbConsoleService.csproj">
+      <Project>{A8BC7D41-54E2-4FCF-AB22-C8DFFC7C5AF0}</Project>
+      <Name>BestCS.DbConsoleService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Security\BestCS.Security.csproj">
+      <Project>{EE87D000-A384-4831-9EF0-5843AA14C164}</Project>
+      <Name>BestCS.Security</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="PSql\Npgsql\NpgsqlClosedState.resx">
+      <DependentUpon>NpgsqlClosedState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSql\Npgsql\NpgsqlCommand.resx">
+      <DependentUpon>NpgsqlCommand.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSql\Npgsql\NpgsqlCommandBuilder.resx">
+      <DependentUpon>NpgsqlCommandBuilder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSql\Npgsql\NpgsqlConnectedState.resx">
+      <DependentUpon>NpgsqlConnectedState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSql\Npgsql\NpgsqlConnection.resx">
+      <DependentUpon>NpgsqlConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSql\Npgsql\NpgsqlConnectionStringBuilder.resx">
+      <DependentUpon>NpgsqlConnectionStringBuilder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSql\Npgsql\NpgsqlEventLog.resx">
+      <DependentUpon>NpgsqlEventLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSql\Npgsql\NpgsqlParameter.resx">
+      <DependentUpon>NpgsqlParameter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSql\Npgsql\NpgsqlParameterCollection.resx">
+      <DependentUpon>NpgsqlParameterCollection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSql\Npgsql\NpgsqlReadyState.resx">
+      <DependentUpon>NpgsqlReadyState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSql\Npgsql\NpgsqlRow.resx">
+      <DependentUpon>NpgsqlRow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSql\Npgsql\NpgsqlState.resx">
+      <DependentUpon>NpgsqlState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSql\Npgsql\NpgsqlTransaction.resx">
+      <DependentUpon>NpgsqlTransaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSql\Npgsql\PGUtil.resx">
+      <DependentUpon>PGUtil.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="PSql\EF" />
+    <Folder Include="PSql\EF\.vs" />
+    <Folder Include="PSql\EF\.vs\BestCS.EF6.PostgreSqlClient" />
+    <Folder Include="PSql\EF\.vs\BestCS.EF6.PostgreSqlClient\v14" />
+    <Folder Include="PSql\EF\SqlGenerators" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

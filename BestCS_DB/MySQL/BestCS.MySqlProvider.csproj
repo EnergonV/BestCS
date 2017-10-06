@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{346B8651-562E-4BCB-8BC3-3B7460537363}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SqlConsoleProvider</RootNamespace>
+    <AssemblyName>BestCS.MySqlProvider</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <NoWin32Manifest>False</NoWin32Manifest>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <NoStdLib>False</NoStdLib>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\BestCSpair.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>False</DelaySign>
+    <AssemblyOriginatorKeyMode>File</AssemblyOriginatorKeyMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>PdbOnly</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <BaseAddress>4194304</BaseAddress>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MySqlConsoleProvider.cs" />
+    <Compile Include="MySqlData\Authentication\AuthenticationManager.cs" />
+    <Compile Include="MySqlData\Authentication\MySQLAuthenticationPlugin.cs" />
+    <Compile Include="MySqlData\Authentication\NativePasswordPlugins.cs" />
+    <Compile Include="MySqlData\Authentication\Sha256AuthenticationPlugin.cs" />
+    <Compile Include="MySqlData\Authentication\WindowsAuthenticationPlugin.cs" />
+    <Compile Include="MySqlData\BulkLoader.cs" />
+    <Compile Include="MySqlData\CharSetMap.cs" />
+    <Compile Include="MySqlData\command.cs" />
+    <Compile Include="MySqlData\CommandBuilder.cs" />
+    <Compile Include="MySqlData\common\Cache.cs" />
+    <Compile Include="MySqlData\common\ContextString.cs" />
+    <Compile Include="MySqlData\common\LowResolutionStopwatch.cs" />
+    <Compile Include="MySqlData\common\MyNetworkStream.cs" />
+    <Compile Include="MySqlData\common\MySqlTokenizer.cs" />
+    <Compile Include="MySqlData\common\NamedPipeStream.cs" />
+    <Compile Include="MySqlData\common\NativeMethods.cs" />
+    <Compile Include="MySqlData\common\Platform.cs" />
+    <Compile Include="MySqlData\common\QueryNormalizer.cs" />
+    <Compile Include="MySqlData\common\SHA1.cs" />
+    <Compile Include="MySqlData\common\SharedMemoryStream.cs" />
+    <Compile Include="MySqlData\common\SocketStream.cs" />
+    <Compile Include="MySqlData\common\StreamCreator.cs" />
+    <Compile Include="MySqlData\common\StringUtility.cs" />
+    <Compile Include="MySqlData\common\Version.cs" />
+    <Compile Include="MySqlData\CompressedStream.cs" />
+    <Compile Include="MySqlData\Connection.cs" />
+    <Compile Include="MySqlData\Crypt.cs" />
+    <Compile Include="MySqlData\dataadapter.cs" />
+    <Compile Include="MySqlData\datareader.cs" />
+    <Compile Include="MySqlData\Driver.cs" />
+    <Compile Include="MySqlData\Exception.cs" />
+    <Compile Include="MySqlData\extensions\NonRT\MySqlCommand.cs" />
+    <Compile Include="MySqlData\extensions\NonRT\MySqlConnection.cs" />
+    <Compile Include="MySqlData\extensions\NonRT\MySqlConnectionStringBuilder.cs" />
+    <Compile Include="MySqlData\extensions\NonRT\MySqlDataReader.cs" />
+    <Compile Include="MySqlData\extensions\NonRT\MySqlDateTime.cs" />
+    <Compile Include="MySqlData\extensions\NonRT\MySqlParameter.cs" />
+    <Compile Include="MySqlData\extensions\NonRT\MySqlParameterCollection.cs" />
+    <Compile Include="MySqlData\extensions\NonRT\MySqlTrace.cs" />
+    <Compile Include="MySqlData\extensions\NonRT\MySqlTransaction.cs" />
+    <Compile Include="MySqlData\Field.cs" />
+    <Compile Include="MySqlData\Installer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MySqlData\Interceptors\CommandInterceptor.cs" />
+    <Compile Include="MySqlData\Interceptors\ExceptionInterceptor.cs" />
+    <Compile Include="MySqlData\Interceptors\Interceptor.cs" />
+    <Compile Include="MySqlData\ISSchemaProvider.cs" />
+    <Compile Include="MySqlData\Memcached\BinaryClient.cs" />
+    <Compile Include="MySqlData\Memcached\Client.cs" />
+    <Compile Include="MySqlData\Memcached\MemcachedException.cs" />
+    <Compile Include="MySqlData\Memcached\TextClient.cs" />
+    <Compile Include="MySqlData\MySqlClientFactory.cs" />
+    <Compile Include="MySqlData\MySqlClientPermission.cs" />
+    <Compile Include="MySqlData\MySqlClientPermissionAttribute.cs" />
+    <Compile Include="MySqlData\MySqlConfiguration.cs" />
+    <Compile Include="MySqlData\MySqlConnectionStringBuilder.cs" />
+    <Compile Include="MySqlData\MysqlDefs.cs" />
+    <Compile Include="MySqlData\MySqlError.cs" />
+    <Compile Include="MySqlData\MySqlHelper.cs" />
+    <Compile Include="MySqlData\MySqlPacket.cs" />
+    <Compile Include="MySqlData\MySqlPool.cs" />
+    <Compile Include="MySqlData\MySqlPoolManager.cs" />
+    <Compile Include="MySqlData\MySqlPromotableTransaction.cs" />
+    <Compile Include="MySqlData\MySqlScript.cs" />
+    <Compile Include="MySqlData\MySqlSecurityPermission.cs" />
+    <Compile Include="MySqlData\MySqlStream.cs" />
+    <Compile Include="MySqlData\NativeDriver.cs" />
+    <Compile Include="MySqlData\parameter.cs" />
+    <Compile Include="MySqlData\parameter_collection.cs" />
+    <Compile Include="MySqlData\PerformanceMonitor.cs" />
+    <Compile Include="MySqlData\PreparableStatement.cs" />
+    <Compile Include="MySqlData\ProcedureCache.cs" />
+    <Compile Include="MySqlData\Replication\ReplicationConfiguration.cs" />
+    <Compile Include="MySqlData\Replication\ReplicationManager.cs" />
+    <Compile Include="MySqlData\Replication\ReplicationRoundRobinServerGroup.cs" />
+    <Compile Include="MySqlData\Replication\ReplicationServer.cs" />
+    <Compile Include="MySqlData\Replication\ReplicationServerGroup.cs" />
+    <Compile Include="MySqlData\ResultSet.cs" />
+    <Compile Include="MySqlData\Runtime.cs" />
+    <Compile Include="MySqlData\Schema.cs" />
+    <Compile Include="MySqlData\SchemaProvider.cs" />
+    <Compile Include="MySqlData\Statement.cs" />
+    <Compile Include="MySqlData\StoredProcedure.cs" />
+    <Compile Include="MySqlData\SystemPerformanceMonitor.cs" />
+    <Compile Include="MySqlData\TableCache.cs" />
+    <Compile Include="MySqlData\TimedStream.cs" />
+    <Compile Include="MySqlData\TracingDriver.cs" />
+    <Compile Include="MySqlData\transaction.cs" />
+    <Compile Include="MySqlData\Types\MetaData.cs" />
+    <Compile Include="MySqlData\Types\MySqlBinary.cs" />
+    <Compile Include="MySqlData\Types\MySqlBit.cs" />
+    <Compile Include="MySqlData\Types\MySqlByte.cs" />
+    <Compile Include="MySqlData\Types\MySqlConversionException.cs" />
+    <Compile Include="MySqlData\Types\MySqlDateTime.cs" />
+    <Compile Include="MySqlData\Types\MySqlDecimal.cs" />
+    <Compile Include="MySqlData\Types\MySqlDouble.cs" />
+    <Compile Include="MySqlData\Types\MySqlGeometry.cs" />
+    <Compile Include="MySqlData\Types\MySqlGuid.cs" />
+    <Compile Include="MySqlData\Types\MySqlInt16.cs" />
+    <Compile Include="MySqlData\Types\MySqlInt32.cs" />
+    <Compile Include="MySqlData\Types\MySqlInt64.cs" />
+    <Compile Include="MySqlData\Types\MySqlSingle.cs" />
+    <Compile Include="MySqlData\Types\MySqlString.cs" />
+    <Compile Include="MySqlData\Types\MySqlTime.cs" />
+    <Compile Include="MySqlData\Types\MySqlUByte.cs" />
+    <Compile Include="MySqlData\Types\MySqlUInt16.cs" />
+    <Compile Include="MySqlData\Types\MySqlUInt32.cs" />
+    <Compile Include="MySqlData\Types\MySqlUInt64.cs" />
+    <Compile Include="MySqlData\Types\MySqlValue.cs" />
+    <Compile Include="MySqlData\zlib\Adler32.cs" />
+    <Compile Include="MySqlData\zlib\Deflate.cs" />
+    <Compile Include="MySqlData\zlib\InfBlocks.cs" />
+    <Compile Include="MySqlData\zlib\InfCodes.cs" />
+    <Compile Include="MySqlData\zlib\Inflate.cs" />
+    <Compile Include="MySqlData\zlib\InfTree.cs" />
+    <Compile Include="MySqlData\zlib\StaticTree.cs" />
+    <Compile Include="MySqlData\zlib\SupportClass.cs" />
+    <Compile Include="MySqlData\zlib\Tree.cs" />
+    <Compile Include="MySqlData\zlib\ZInputStream.cs" />
+    <Compile Include="MySqlData\zlib\Zlib.cs" />
+    <Compile Include="MySqlData\zlib\ZOutputStream.cs" />
+    <Compile Include="MySqlData\zlib\ZStream.cs" />
+    <Compile Include="MySqlData\zlib\ZStreamException.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BestCS.DbConsoleService.csproj">
+      <Project>{A8BC7D41-54E2-4FCF-AB22-C8DFFC7C5AF0}</Project>
+      <Name>DbConsoleService</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

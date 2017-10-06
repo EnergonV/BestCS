@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectGuid>{D31AF1EF-166F-436A-A6E6-05752E3E44A6}</ProjectGuid>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <RootNamespace>BestCS</RootNamespace>
+    <AssemblyName>BestCS.Robotics</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFrameworkProfile />
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <NoStdLib>False</NoStdLib>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <WarningLevel>4</WarningLevel>
+    <NoWin32Manifest>False</NoWin32Manifest>
+    <DocumentationFile>..\..\bin\Debug\BestCS.Robotics.xml</DocumentationFile>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\BestCSpair.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>False</DelaySign>
+    <AssemblyOriginatorKeyMode>File</AssemblyOriginatorKeyMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <BaseAddress>4194304</BaseAddress>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <FileAlignment>4096</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <OutputPath>..\..\bin\Debug\</OutputPath>
+    <DocumentationFile>..\..\bin\BestCS.Robotics.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>..\..\bin\Release\</OutputPath>
+    <DocumentationFile>..\..\bin\BestCS.Robotics.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Audition\Beat\EnergyBeatDetector.cs" />
+    <Compile Include="Audition\Beat\IBeatDetector.cs" />
+    <Compile Include="Fuzzy\Clause.cs" />
+    <Compile Include="Fuzzy\Database.cs" />
+    <Compile Include="Fuzzy\Defuzzification\CentroidDefuzzifier.cs" />
+    <Compile Include="Fuzzy\Defuzzification\IDefuzzifier.cs" />
+    <Compile Include="Fuzzy\FuzzyOutput.cs" />
+    <Compile Include="Fuzzy\FuzzySet.cs" />
+    <Compile Include="Fuzzy\InferenceSystem.cs" />
+    <Compile Include="Fuzzy\LinguisticVariable.cs" />
+    <Compile Include="Fuzzy\Membership Functions\IMembershipFunction.cs" />
+    <Compile Include="Fuzzy\Membership Functions\PiecewiseLinearFunction.cs" />
+    <Compile Include="Fuzzy\Membership Functions\SingletonFunction.cs" />
+    <Compile Include="Fuzzy\Membership Functions\TrapezoidalFunction.cs" />
+    <Compile Include="Fuzzy\Operators\ICoNorm.cs" />
+    <Compile Include="Fuzzy\Operators\INorm.cs" />
+    <Compile Include="Fuzzy\Operators\IUnaryOperator.cs" />
+    <Compile Include="Fuzzy\Operators\MaximumCoNorm.cs" />
+    <Compile Include="Fuzzy\Operators\MinimumNorm.cs" />
+    <Compile Include="Fuzzy\Operators\NotOperator.cs" />
+    <Compile Include="Fuzzy\Operators\ProductNorm.cs" />
+    <Compile Include="Fuzzy\Rule.cs" />
+    <Compile Include="Fuzzy\Rulebase.cs" />
+    <Compile Include="Genetic\Chromosomes\BinaryChromosome.cs" />
+    <Compile Include="Genetic\Chromosomes\ChromosomeBase.cs" />
+    <Compile Include="Genetic\Chromosomes\DoubleArrayChromosome.cs" />
+    <Compile Include="Genetic\Chromosomes\GP\ExtendedGeneFunction.cs" />
+    <Compile Include="Genetic\Chromosomes\GP\GEPChromosome.cs" />
+    <Compile Include="Genetic\Chromosomes\GP\GPTreeChromosome.cs" />
+    <Compile Include="Genetic\Chromosomes\GP\GPTreeNode.cs" />
+    <Compile Include="Genetic\Chromosomes\GP\IGPGene.cs" />
+    <Compile Include="Genetic\Chromosomes\GP\SimpleGeneFunction.cs" />
+    <Compile Include="Genetic\Chromosomes\IChromosome.cs" />
+    <Compile Include="Genetic\Chromosomes\PermutationChromosome.cs" />
+    <Compile Include="Genetic\Chromosomes\ShortArrayChromosome.cs" />
+    <Compile Include="Genetic\Fitness Functions\IFitnessFunction.cs" />
+    <Compile Include="Genetic\Fitness Functions\OptimizationFunction1D.cs" />
+    <Compile Include="Genetic\Fitness Functions\OptimizationFunction2D.cs" />
+    <Compile Include="Genetic\Fitness Functions\SymbolicRegressionFitness.cs" />
+    <Compile Include="Genetic\Fitness Functions\TimeSeriesPredictionFitness.cs" />
+    <Compile Include="Genetic\Population.cs" />
+    <Compile Include="Genetic\Selection Algorithms\EliteSelection.cs" />
+    <Compile Include="Genetic\Selection Algorithms\ISelectionMethod.cs" />
+    <Compile Include="Genetic\Selection Algorithms\RankSelection.cs" />
+    <Compile Include="Genetic\Selection Algorithms\RouletteWheelSelection.cs" />
+    <Compile Include="Lego\Internals\GhostAPI.cs" />
+    <Compile Include="Lego\Internals\INXTCommunicationInterface.cs" />
+    <Compile Include="Lego\Internals\NXTCommands.cs" />
+    <Compile Include="Lego\Internals\RCXCommands.cs" />
+    <Compile Include="Lego\Internals\SerialCommunication.cs" />
+    <Compile Include="Lego\NXTBrick.cs" />
+    <Compile Include="Lego\RCXBrick.cs" />
+    <Compile Include="Neuro\Activation Functions\Base\IStochasticFunction.cs" />
+    <Compile Include="Neuro\Activation Functions\BernoulliFunction.cs" />
+    <Compile Include="Neuro\Activation Functions\BipolarSigmoidFunction.cs" />
+    <Compile Include="Neuro\Activation Functions\GaussianFunction.cs" />
+    <Compile Include="Neuro\Activation Functions\IActivationFunction.cs" />
+    <Compile Include="Neuro\Activation Functions\IdentityFunction.cs" />
+    <Compile Include="Neuro\Activation Functions\LinearFunction.cs" />
+    <Compile Include="Neuro\Activation Functions\RectifiedLinearFunction.cs" />
+    <Compile Include="Neuro\Activation Functions\SigmoidFunction.cs" />
+    <Compile Include="Neuro\Activation Functions\ThresholdFunction.cs" />
+    <Compile Include="Neuro\GlobalSuppressions.cs" />
+    <Compile Include="Neuro\Initialization\GaussianWeights.cs" />
+    <Compile Include="Neuro\Initialization\NguyenWidrow.cs" />
+    <Compile Include="Neuro\Layers\ActivationLayer.cs" />
+    <Compile Include="Neuro\Layers\DistanceLayer.cs" />
+    <Compile Include="Neuro\Layers\Layer.cs" />
+    <Compile Include="Neuro\Layers\StochasticLayer.cs" />
+    <Compile Include="Neuro\Learning\BackPropagationLearning.cs" />
+    <Compile Include="Neuro\Learning\ContrastiveDivergenceLearning.cs" />
+    <Compile Include="Neuro\Learning\DeepBeliefNetworkLearning.cs" />
+    <Compile Include="Neuro\Learning\DeepNeuralNetworkLearning.cs" />
+    <Compile Include="Neuro\Learning\DeltaRuleLearning.cs" />
+    <Compile Include="Neuro\Learning\ElasticNetworkLearning.cs" />
+    <Compile Include="Neuro\Learning\EvolutionaryFitness.cs" />
+    <Compile Include="Neuro\Learning\EvolutionaryLearning.cs" />
+    <Compile Include="Neuro\Learning\ISupervisedLearning.cs" />
+    <Compile Include="Neuro\Learning\IUnsupervisedLearning.cs" />
+    <Compile Include="Neuro\Learning\LevenbergMarquardtLearning.cs" />
+    <Compile Include="Neuro\Learning\ParallelResilientBackPropagationLearning.cs" />
+    <Compile Include="Neuro\Learning\PerceptronLearning.cs" />
+    <Compile Include="Neuro\Learning\ResilientBackPropagationLearning.cs" />
+    <Compile Include="Neuro\Learning\SOMLearning.cs" />
+    <Compile Include="Neuro\Networks\ActivationNetwork.cs" />
+    <Compile Include="Neuro\Networks\DeepBeliefNetwork.cs" />
+    <Compile Include="Neuro\Networks\DistanceNetwork.cs" />
+    <Compile Include="Neuro\Networks\Network.cs" />
+    <Compile Include="Neuro\Networks\RestrictedBoltzmannMachine.cs" />
+    <Compile Include="Neuro\Neurons\ActivationNeuron.cs" />
+    <Compile Include="Neuro\Neurons\DistanceNeuron.cs" />
+    <Compile Include="Neuro\Neurons\Neuron.cs" />
+    <Compile Include="Neuro\Neurons\StochasticNeuron.cs" />
+    <Compile Include="Neuro\Visualization\ActivationMaximization.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Surveyor\SRV1.cs" />
+    <Compile Include="Surveyor\SRV1Camera.cs" />
+    <Compile Include="Surveyor\SVS.cs" />
+    <Compile Include="Vision\Detection\Haar Cascade\Default\FaceHaarCascade.cs" />
+    <Compile Include="Vision\Detection\Haar Cascade\Default\NoseHaarCascade.cs" />
+    <Compile Include="Vision\Detection\Haar Cascade\HaarCascade.cs" />
+    <Compile Include="Vision\Detection\Haar Cascade\HaarCascadeStage.cs" />
+    <Compile Include="Vision\Detection\Haar Cascade\HaarCascadeWriter.cs" />
+    <Compile Include="Vision\Detection\Haar Cascade\HaarClassifier.cs" />
+    <Compile Include="Vision\Detection\Haar Cascade\HaarFeature.cs" />
+    <Compile Include="Vision\Detection\Haar Cascade\HaarFeatureNode.cs" />
+    <Compile Include="Vision\Detection\Haar Cascade\HaarRectangle.cs" />
+    <Compile Include="Vision\Detection\HaarObjectDetector.cs" />
+    <Compile Include="Vision\Detection\IObjectDetector.cs" />
+    <Compile Include="Vision\GlobalSuppressions.cs" />
+    <Compile Include="Vision\GroupMatching.cs" />
+    <Compile Include="Vision\GroupMatching`1.cs" />
+    <Compile Include="Vision\Motion\BlobCountingObjectsProcessing.cs" />
+    <Compile Include="Vision\Motion\CustomFrameDifferenceDetector.cs" />
+    <Compile Include="Vision\Motion\GridMotionAreaProcessing.cs" />
+    <Compile Include="Vision\Motion\IMotionDetector.cs" />
+    <Compile Include="Vision\Motion\IMotionProcessing.cs" />
+    <Compile Include="Vision\Motion\MotionAreaHighlighting.cs" />
+    <Compile Include="Vision\Motion\MotionBorderHighlighting.cs" />
+    <Compile Include="Vision\Motion\MotionDetector.cs" />
+    <Compile Include="Vision\Motion\SimpleBackgroundModelingDetector.cs" />
+    <Compile Include="Vision\Motion\TwoFramesDifferenceDetector.cs" />
+    <Compile Include="Vision\Tools.cs" />
+    <Compile Include="Vision\Tracking\Camshift.cs" />
+    <Compile Include="Vision\Tracking\HslBlobTracker.cs" />
+    <Compile Include="Vision\Tracking\IObjectTracker.cs" />
+    <Compile Include="Vision\Tracking\MatchingTracker.cs" />
+    <Compile Include="Vision\Tracking\TrackingObject.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Fuzzy\AForge.Fuzzy.xml" />
+    <None Include="Lego\Images\nxt.jpg" />
+    <None Include="Lego\Images\rcx.jpg" />
+    <None Include="Neuro\Images\sigmoid.bmp" />
+    <None Include="Neuro\Images\sigmoid_bipolar.bmp" />
+    <None Include="Neuro\Images\threshold.bmp" />
+    <None Include="Surveyor\Images\srv1-robot.jpg" />
+    <None Include="Surveyor\Images\svs.jpg" />
+    <None Include="Vision\AForge.Vision.xml" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\BestCS_Core\Core.csproj">
+      <Project>{931374BD-64A4-4124-8F0F-3231F600D223}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BestCS_MM\MM.csproj">
+      <Project>{EBF173A5-18BA-4F47-96C5-23DE02A41D7B}</Project>
+      <Name>MM</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
