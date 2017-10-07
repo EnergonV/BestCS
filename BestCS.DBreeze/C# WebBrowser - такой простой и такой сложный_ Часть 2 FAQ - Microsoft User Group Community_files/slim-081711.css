@@ -1,0 +1,57 @@
+#mc_embed_signup FORM {
+	POSITION: relative; PADDING-BOTTOM: 10px; TEXT-ALIGN: left; PADDING-TOP: 10px; PADDING-LEFT: 3%; DISPLAY: block; PADDING-RIGHT: 0px
+}
+#mc_embed_signup H2 {
+	FONT-SIZE: 1.4em; FONT-WEIGHT: bold; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 15px 0px; PADDING-RIGHT: 0px
+}
+#mc_embed_signup INPUT {
+	BORDER-TOP: #999 1px solid; BORDER-RIGHT: #999 1px solid; BORDER-BOTTOM: #999 1px solid; BORDER-LEFT: #999 1px solid; -webkit-appearance: none
+}
+#mc_embed_signup INPUT[type=checkbox] {
+	-webkit-appearance: checkbox
+}
+#mc_embed_signup INPUT[type=radio] {
+	-webkit-appearance: radio
+}
+#mc_embed_signup INPUT:focus {
+	BORDER-TOP-COLOR: #333; BORDER-LEFT-COLOR: #333; BORDER-BOTTOM-COLOR: #333; BORDER-RIGHT-COLOR: #333
+}
+#mc_embed_signup .button {
+	CURSOR: pointer; FONT-SIZE: 15px; TEXT-DECORATION: none; BORDER-TOP: 0px; HEIGHT: 32px; BORDER-RIGHT: 0px; WIDTH: auto; VERTICAL-ALIGN: top; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; FONT-WEIGHT: bold; COLOR: #ffffff; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px 5px 10px 0px; BORDER-LEFT: 0px; DISPLAY: inline-block; LINE-HEIGHT: 32px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: #aaa; border-radius: 4px
+}
+#mc_embed_signup .button:hover {
+	BACKGROUND-COLOR: #777
+}
+#mc_embed_signup .small-meta {
+	FONT-SIZE: 11px
+}
+#mc_embed_signup .nowrap {
+	WHITE-SPACE: nowrap
+}
+#mc_embed_signup .clear {
+	CLEAR: none; DISPLAY: inline
+}
+#mc_embed_signup LABEL {
+	FONT-SIZE: 16px; FONT-WEIGHT: bold; PADDING-BOTTOM: 10px; DISPLAY: block
+}
+#mc_embed_signup INPUT.email {
+	WIDTH: 58%; MIN-WIDTH: 130px; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px 4% 10px 0px; DISPLAY: block; PADDING-RIGHT: 0px; TEXT-INDENT: 5px
+}
+#mc_embed_signup INPUT.button {
+	WIDTH: 35%; MIN-WIDTH: 90px; MARGIN: 0px 0px 10px; DISPLAY: block
+}
+#mc_embed_signup DIV#mce-responses {
+	OVERFLOW: hidden; WIDTH: 90%; FLOAT: left; PADDING-BOTTOM: 0em; PADDING-TOP: 0em; PADDING-LEFT: 0.5em; CLEAR: both; MARGIN: 0px 5%; TOP: -1.4em; PADDING-RIGHT: 0.5em
+}
+#mc_embed_signup DIV.response {
+	WIDTH: 80%; FLOAT: left; FONT-WEIGHT: bold; PADDING-BOTTOM: 0.5em; PADDING-TOP: 1em; PADDING-LEFT: 0px; MARGIN: 1em 0px; Z-INDEX: 1; TOP: -1.5em; PADDING-RIGHT: 0.5em
+}
+#mc_embed_signup #mce-error-response {
+	DISPLAY: none
+}
+#mc_embed_signup #mce-success-response {
+	COLOR: #529214; DISPLAY: none
+}
+#mc_embed_signup LABEL.error {
+	WIDTH: auto; FLOAT: none; PADDING-BOTTOM: 0.5em; TEXT-ALIGN: left; PADDING-TOP: 0.5em; PADDING-LEFT: 0px; MARGIN-LEFT: 1.05em; DISPLAY: block; PADDING-RIGHT: 0px
+}

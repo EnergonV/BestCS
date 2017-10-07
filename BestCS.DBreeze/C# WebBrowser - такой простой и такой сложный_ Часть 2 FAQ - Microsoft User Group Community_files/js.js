@@ -1,0 +1,1 @@
+var ruasrv = '//admin10.rabota.ua/Export/Context/Informer.aspx?partnerId=15';document.getElementById('ruac15').innerHTML = '<iframe id="RUAFRAME" frameborder="0" scrolling="no" style="width:400px;height:400px;border:none;" src="'+ruasrv+'"></iframe>';

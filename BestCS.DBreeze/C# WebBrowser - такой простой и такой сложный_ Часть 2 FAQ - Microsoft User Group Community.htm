@@ -1,0 +1,338 @@
+<BODY scroll=auto><DIV id=body>
+<DIV style="FLOAT: left"><A title="    Microsoft User Group Community&#13;&#10;" class=logo href="http://msugvnua000.web710.discountasp.net/"><IMG title="    Microsoft User Group Community&#13;&#10;" alt="    Microsoft User Group Community&#13;&#10;" src="C%23%20WebBrowser%20-%20такой%20простой%20и%20такой%20сложный_%20Часть%202%20FAQ%20-%20Microsoft%20User%20Group%20Community_files/logo3.png" height=75> </A></DIV>
+<DIV id=logindisplay>
+<P><A href="http://msugvnua000.web710.discountasp.net/Account/LogOn?returnUrl=/Posts/Details/3769">Войти</A></P>
+<P><A href="http://msugvnua000.web710.discountasp.net/Posts/Create">Написать публикацию</A> | <A href="http://msugvnua000.web710.discountasp.net/Events/Create">Добавить событие</A></P></DIV>
+<UL class=topnav>
+<LI><A href="http://msugvnua000.web710.discountasp.net/">Главная</A> 
+<LI><A class=active href="http://msugvnua000.web710.discountasp.net/Posts">Публикации</A> 
+<LI><A href="http://msugvnua000.web710.discountasp.net/Companies">Компании</A> 
+<LI><A href="http://msugvnua000.web710.discountasp.net/Events">События</A> 
+<LI><A href="http://msugvnua000.web710.discountasp.net/UserGroups">User Groups</A> 
+<LI><A id=searchLink href="http://msugvnua000.web710.discountasp.net/Posts/Details/3769#searchPopup">Поиск</A> 
+<DIV style="DISPLAY: none">
+<DIV id=searchPopup style="HEIGHT: 600px; WIDTH: 870px; BACKGROUND-COLOR: white">
+<H1>Поиск по сайту</H1>
+<DIV id=cse style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WIDTH: 850px; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none">Loading</DIV>
+<SCRIPT type=text/javascript src="C%23%20WebBrowser%20-%20такой%20простой%20и%20такой%20сложный_%20Часть%202%20FAQ%20-%20Microsoft%20User%20Group%20Community_files/jsapi.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+            google.load('search', '1', { language: 'ru' });
+            google.setOnLoadCallback(function () {
+                var customSearchControl = new google.search.CustomSearchControl('005279490821788283427:vbe7mdnqap8');
+                customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+                customSearchControl.draw('cse');
+            }, true);
+        </SCRIPT>
+<LINK rel=stylesheet type=text/css href="C%23%20WebBrowser%20-%20такой%20простой%20и%20такой%20сложный_%20Часть%202%20FAQ%20-%20Microsoft%20User%20Group%20Community_files/default.css"></DIV></DIV></LI></UL></HEADER><ARTICLE>
+<H1>C# WebBrowser - такой простой и такой сложный. Часть 2: FAQ</H1>
+<DIV style="COLOR: gray; FONT-STYLE: italic">понедельник, 28 июня 2010, <A style="TEXT-DECORATION: underline; COLOR: gray; FONT-STYLE: italic" href="http://msugvnua000.web710.discountasp.net/Members/Details/2100">Александр Краковецкий</A> </DIV><BR>
+<DIV id=content>
+<P>В предыдущей части мы рассмотрели основные принципы разработки HTML Editor на базе <I>WebBrowser</I>. В этом посте я постараюсь дать ответы на часто задаваемые вопросы по <I>WebBrowser</I>. Элемент управления <I>WebBrowser</I> позволяет разместить в приложениях Windows Forms веб-страницы и другие документы с поддержкой браузера. В первую очередь хочу остановиться на том, где можно использовать компонент <I>WebBrowser</I>:</P>
+<UL>
+<LI>при написании "своих" веб-браузеров со специфической логикой 
+<LI>для обеспечения интеграции справочной HTML-системы 
+<LI>для разработки уже рассмотренного нами HTML Editor 
+<LI>web data extracting, data parsing c помощью Microsoft.mshtml.dll (хотя этот вариант парсинга не самый лучший) </LI></UL>
+<H3>Каким образом отследить HTTP ошибки</H3>
+<P>Для этого в проект необходимо добавить библиотеку "Microsoft Internet Contols" (Add Reference -&gt; COM), после чего написать следующий код:</P><PRE class="brush: csharp">        private void Form1_Load(object sender, EventArgs e)
+        {
+            //InitWebBrowser();
+            webBrowser.Navigate("http://m.bing.com/");
+            var axBrowser = (SHDocVw.WebBrowser)this.webBrowser.ActiveXInstance;
+            axBrowser.NavigateError += new SHDocVw.DWebBrowserEvents2_NavigateErrorEventHandler(axBrowser_NavigateError);
+        }
+
+        void axBrowser_NavigateError(object pDisp, ref object URL, ref object Frame, ref object StatusCode, ref bool Cancel)
+        {
+            if (StatusCode.ToString() == "404")
+            {
+                MessageBox.Show("Page no found");
+            }
+        }
+</PRE>
+<H3>Почему событие DocumentCompleted вызывается несколько раз и как этого избежать?</H3>
+<P>Это происходит по той причине, что событие DocumentComplete вызывается каждый раз для отдельного фрейма (frame). Таким образом, для корректной работы необходимо добавить дополнительные проверки:</P><PRE class="brush: csharp">void BrowserDocumentCompleted(object sender,
+        WebBrowserDocumentCompletedEventArgs e)
+{
+  if (e.Url.AbsolutePath != (sender as WebBrowser).Url.AbsolutePath)
+    return; 
+
+  //The page is finished loading 
+}
+</PRE>
+<P>Еще один способ рассмотрен дальше.</P>
+<H3>Как дождаться загрузки страницы полностью?<BR></H3>
+<P>Более эффективным вариантом дождаться полного окончания загрузки страницы является вариант с использованием свойства ReadyState:</P><PRE class="brush: csharp">webBrowser.Navigate("http:///google.com");
+webBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(webBrowser_DocumentCompleted);
+
+while (webBrowser.ReadyState != WebBrowserReadyState.Complete)
+{
+    Application.DoEvents();
+}</PRE>
+<H3>Как сделать скриншот веб-страницы программно?</H3>
+<P>Для этого есть метод DrawToBitmap:</P><PRE class="brush: csharp">void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+{
+    WebBrowser webBrowser = (WebBrowser)sender;
+    webBrowser.ClientSize = new Size(1024, 800);
+    webBrowser.ScrollBarsEnabled = false;
+    Bitmap image = new Bitmap(webBrowser.Bounds.Width, webBrowser.Bounds.Height);
+    webBrowser.BringToFront();
+    webBrowser.DrawToBitmap(image, webBrowser.Bounds);
+}</PRE>
+<P>Вы не сможете сделать скриншот тех участков веб-страницы, где используется Flash или Silverlight.</P>
+<P>На эту тему есть целый проект: <A href="http://screenshotsextractor.codeplex.com/" target=_blank>http://screenshotsextractor.codeplex.com/</A></P>
+<H3>Как запретить использование веб-браузера?</H3>
+<P>У <I>WebBrowser</I> нет свойства <I>Enabled</I>, поэтому вы не можете запретить его использование напрямую. Но с учетом того, что <I>WebBrowser </I>- наследник <I>Control</I>, то вы можете это сделать таким образом:</P><PRE class="brush: csharp">((Control)webBrowser1).Enabled = false;</PRE>
+<H3>Как выполнить свой код на JavaScript?</H3>
+<P>Для этого необходимо использовать следующий код:</P><PRE class="brush: csharp">HtmlElement head = webBrowser1.Document.GetElementsByTagName("head")[0];
+HtmlElement scriptEl = webBrowser1.Document.CreateElement("script");
+IHTMLScriptElement element = (IHTMLScriptElement)scriptEl.DomElement;
+element.text = "function sayHello() { alert('hello') }";
+head.AppendChild(scriptEl);
+webBrowser1.Document.InvokeScript("sayHello");
+</PRE>
+<H3>Как распечатать страницу с помощью WebBrowser?</H3>
+<P>Пример кода <A href="http://msdn.microsoft.com/en-us/library/b0wes9a3.aspx" target=_blank>можно найти на MSDN</A>:</P><PRE class="brush: csharp">private void PrintHelpPage()
+{
+    // Create a WebBrowser instance. 
+    WebBrowser webBrowserForPrinting = new WebBrowser();
+
+    // Add an event handler that prints the document after it loads.
+    webBrowserForPrinting.DocumentCompleted +=
+        new WebBrowserDocumentCompletedEventHandler(PrintDocument);
+
+    // Set the Url property to load the document.
+    webBrowserForPrinting.Url = new Uri(@"\\myshare\help.html");
+}
+
+private void PrintDocument(object sender,
+    WebBrowserDocumentCompletedEventArgs e)
+{
+    // Print the document now that it is fully loaded.
+    ((WebBrowser)sender).Print();
+
+    // Dispose the WebBrowser now that the task is complete. 
+    ((WebBrowser)sender).Dispose();
+}
+</PRE>
+<H3>Как запретить отображение окна с JavaScript ошибками?</H3>
+<P>Несмотря на то, что это достаточно простой вопрос, его также часто задают. Для этого необходимо воспользоваться свойством <I>ScriptErrorsSuppressed</I>: </P><PRE class="brush: csharp">webBrowser.ScriptErrorsSuppressed = true;</PRE>
+<H3>Использование элемента управления WebBrowser в консольных приложениях<BR></H3>
+<P>WebBrowser работает в STA (Single Thread Application) режиме, что значит, что вы, наверняка, получите сообщение об ошибке:</P>
+<P><I>'XXX' cannot be instantiated because the current thread is not in a single-threaded apartment</I></P>
+<P>Для избежания этой проблемы необходимо помечать все методы атрибутом [STAThread].</P>
+<P>Если необходимо получить скриншот в новом потоке, то можно использовать такой код:</P><PRE class="brush: csharp">Thread m_thread = new Thread(new ThreadStart(GenerateWebSiteImage));
+m_thread.SetApartmentState(ApartmentState.STA);
+m_thread.Start();
+m_thread.Join();
+</PRE>
+<P>где GenerateWebSiteImage - метод для получения скриншота, приведенный выше.</P>
+<H3>Как изменить UserAgent у WebBrowser?</H3>
+<P>Несмотря на то, что это довольно простая задача при условии использования WebClient, для WebBrowser решение <A href="http://stackoverflow.com/questions/937573/changing-the-useragent-of-the-webbrowser-control-winforms-c" target=_blank>не такое уж очевидное</A>:</P><PRE class="brush: csharp">public class ExtendedWebBrowser : WebBrowser
+{
+    bool renavigating = false;
+
+    public string UserAgent { get; set; }
+
+    public ExtendedWebBrowser()
+    {
+        DocumentCompleted += SetupBrowser;
+
+        //this will cause SetupBrowser to run (we need a document object)
+        Navigate("about:blank");
+    }
+
+    void SetupBrowser(object sender, WebBrowserDocumentCompletedEventArgs e)
+    {
+        DocumentCompleted -= SetupBrowser;
+        SHDocVw.WebBrowser xBrowser = (SHDocVw.WebBrowser)ActiveXInstance;
+        xBrowser.BeforeNavigate2 += BeforeNavigate;
+        DocumentCompleted += PageLoaded;
+    }
+
+    void PageLoaded(object sender, WebBrowserDocumentCompletedEventArgs e)
+    {
+
+    }
+
+    void BeforeNavigate(object pDisp, ref object url, ref object flags, ref object targetFrameName,
+        ref object postData, ref object headers, ref bool cancel)
+    {
+        if (!string.IsNullOrEmpty(UserAgent))
+        {
+            if (!renavigating)
+            {
+                headers += string.Format("User-Agent: {0}\r\n", UserAgent);
+                renavigating = true;
+                cancel = true;
+                Navigate((string)url, (string)targetFrameName, (byte[])postData, (string)headers);
+            }
+            else
+            {
+                renavigating = false;
+            }
+        }
+    }
+}</PRE>
+<H3>Как запретить у WebBrowser переход на предыдущую страницу? </H3>
+<P>Пользуемся следующим кодом:</P><PRE class="brush: csharp">public class myBrowser : WebBrowser
+{
+
+    private bool? myCanGoBack = null;
+    public bool CanGoBack
+    {
+        get { return myCanGoBack ?? base.CanGoBack; }
+        set { myCanGoBack = value; }
+    }
+
+}</PRE>
+<H3>Проблемы с кодировкой</H3>
+<P>Если вы загружаете HTML страницу из файла, то кириллические символы будут отображаться в неправильной кодировке. </P>
+<P>Для избежания этой проблемы необходимо либо читать из файла в нужной кодировке:</P><PRE class="brush: csharp">StreamReader f = new StreamReader(имя_файла, false, System.Text.Encoding.UNICODE); </PRE>
+<P>либо задать кодировку для <I>WebBrowser</I> с помощью свойства <I>Documemt.Encoding</I>:</P><PRE class="brush: csharp">string Encoding = "ISO-8859-1";
+webBrowser1.Document.Encoding = Encoding;</PRE>
+<H3>Парсинг HTML</H3>
+<P>Для парсинга HTML использование <I>WebBrowser</I> не обязательное, так как все равно задача в итоге сводится к использованию библиотеки Microsoft.mshtml или сторонних библиотек:</P><PRE class="brush: csharp">using mshtml;
+...
+object[] oPageText = { html };
+HTMLDocument doc = new HTMLDocumentClass();
+IHTMLDocument2 doc2 = (IHTMLDocument2)doc;
+doc2.write(oPageText);
+</PRE>
+<P>Но нужно понимать, что парсинг HTML с помощью <I>WebBrowser </I>также возможен:</P><PRE class="brush: csharp">//изображения
+foreach (HtmlElement img in webBrowser.Document.Images)
+{
+   string src = img.GetAttribute("SRC");
+}
+// ссылки
+foreach (HtmlElement link in webBrowserDocument.Links)
+{
+   string href = link.GetAttribute("HREF");
+}</PRE>
+<H3>Еще несколько советов</H3>
+<P>Элемент управления WebBrowser интенсивно потребляет системные ресурсы. Завершив работу с элементом управления не забудьте вызвать метод Dispose(), чтобы своевременно освободить все задействованные ресурсы. Необходимо вызвать метод Dispose() в том же потоке, присоединившем события, который всегда должен быть потоком сообщений или потоком пользовательского интерфейса.</P>
+<P>Класс WebBrowser&nbsp; может использоваться только в потоках в режиме однопотокового апартамента (STA).Чтобы использовать этот класс, убедитесь, что используемый метод Main&nbsp; помечен атрибутом STAThreadAttribute.</P>
+<H3>Дополнительные ссылки</H3>
+<UL>
+<LI><A href="http://www.codeproject.com/KB/aspnet/WebBrowser.aspx" target=_blank>Using the WebBrowser Control in ASP.NET</A> 
+<LI><A href="http://www.codeproject.com/KB/shell/WebBrowserControlDialogs.aspx" target=_blank>Suppressing Hosted WebBrowser Control Dialogs</A> 
+<LI><A href="http://msdn.microsoft.com/en-us/library/system.windows.forms.webbrowser.aspx" target=_blank>WebBrowser Class - MSDN</A> 
+<LI><A href="http://msdn.microsoft.com/en-us/library/system.windows.forms.webbrowser_methods.aspx" target=_blank>Список всех методов WebBrowser</A> 
+<LI><A href="http://www.c-sharpcorner.com/UploadFile/kapilsoni88/WebBrowser_In_DotNet_203162009043331AM/WebBrowser_In_DotNet_2.aspx" target=_blank>WebBrowser in C#</A> </LI></UL></DIV>
+<DIV class=tags></DIV>
+<P>
+<DIV id=socialDiv>
+<SCRIPT src="C%23%20WebBrowser%20-%20такой%20простой%20и%20такой%20сложный_%20Часть%202%20FAQ%20-%20Microsoft%20User%20Group%20Community_files/all.js"></SCRIPT>
+<?XML:NAMESPACE PREFIX = "FB" /><FB:LIKE show_faces="true" width="450"></FB:LIKE></DIV>
+<P></P>
+<H3>Компании из статьи</H3>
+<HR>
+
+<TABLE width="100%">
+<TBODY>
+<TR>
+<TD vAlign=top width=200><A href="http://msugvnua000.web710.discountasp.net/Companies/Details/1060"><B>Microsoft Украина</B></A> 
+<P><BR>Сайт: <BR><A title="C# WebBrowser - такой простой и такой сложный. Часть 2: FAQ" href="http://www.microsoft.com/ukr/ua/" target=_blank>http://www.microsoft.com/ukr/ua/</A></P></TD>
+<TD vAlign=top><IMG title="Microsoft Украина" alt="Microsoft Украина" src="C%23%20WebBrowser%20-%20такой%20простой%20и%20такой%20сложный_%20Часть%202%20FAQ%20-%20Microsoft%20User%20Group%20Community_files/microsoft-logo.gif" align=right> Украинское подразделение компании Microsoft. </TD></TR></TBODY></TABLE>
+<DIV id=comments>
+<HR>
+
+<P>
+<DIV id=disqus_thread></DIV>
+<SCRIPT type=text/javascript>var disqus_shortname = 'msugvnua';var disqus_title = 'C# WebBrowser - такой простой и такой сложный. Часть 2: FAQ';var disqus_identifier = 'Post/Details/3769';var disqus_url = 'http://msugvnua000.web710.discountasp.net/Posts/Details/3769';var disqus_developer = '1';(function () {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = 'http://msugvnua.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</SCRIPT>
+<NOSCRIPT></NOSCRIPT>
+<P></P></DIV></ARTICLE><SECTION>
+<DIV class=sidebar2>
+<H2>Ищите нас в интернетах!</H2>
+<P><A class=twitter-follow-button href="https://twitter.com/msugvnua" data-show-count="true" data-lang="ru">Читать @msugvnua</A>
+<SCRIPT>                        !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } } (document, "script", "twitter-wjs");</SCRIPT>
+ </P>
+<P><A href="http://feeds.feedburner.com/msugvnua"><IMG style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" alt="" src="C%23%20WebBrowser%20-%20такой%20простой%20и%20такой%20сложный_%20Часть%202%20FAQ%20-%20Microsoft%20User%20Group%20Community_files/msugvnua.gif" width=88 height=26></A></P>
+<P><!-- Put this script tag to the <head> of your page -->
+<SCRIPT type=text/javascript src="C%23%20WebBrowser%20-%20такой%20простой%20и%20такой%20сложный_%20Часть%202%20FAQ%20-%20Microsoft%20User%20Group%20Community_files/openapi.js"></SCRIPT>
+
+<P>
+<DIV id=fb-root></DIV>
+<SCRIPT>                        (function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s); js.id = id;
+                            js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1&appId=184276438295080";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        } (document, 'script', 'facebook-jssdk'));</SCRIPT>
+<FB:LIKE show_faces="true" width="350" href="http://msug.vn.ua/" send="false"></FB:LIKE>
+<P></P></DIV><!-- Begin MailChimp Signup Form --><LINK rel=stylesheet type=text/css href="C%23%20WebBrowser%20-%20такой%20простой%20и%20такой%20сложный_%20Часть%202%20FAQ%20-%20Microsoft%20User%20Group%20Community_files/slim-081711.css">
+<STYLE type=text/css>#mc_embed_signup {
+	BACKGROUND: #fff; FONT: 14px Helvetica,Arial,sans-serif; CLEAR: left
+}
+</STYLE>
+
+<DIV id=mc_embed_signup>
+<FORM id=mc-embedded-subscribe-form class=validate method=post name=mc-embedded-subscribe-form action=http://msug.us4.list-manage.com/subscribe/post?u=b248bd2f0003869f6a69dfced&amp;id=9b7f00e70a target=_blank><LABEL for=mce-EMAIL>Subscribe to our mailing list</LABEL> <INPUT id=mce-EMAIL class=email name=EMAIL placeholder="email address" required> 
+<DIV class=clear><INPUT id=mc-embedded-subscribe class=button type=submit value=Subscribe name=subscribe></DIV></FORM></DIV><!--End mc_embed_signup-->
+<DIV class=sidebar2>
+<H2>Комментарии</H2>
+<SCRIPT type=text/javascript src="C%23%20WebBrowser%20-%20такой%20простой%20и%20такой%20сложный_%20Часть%202%20FAQ%20-%20Microsoft%20User%20Group%20Community_files/recent_comments_widget.js"></SCRIPT>
+</DIV>
+<DIV class=sidebar2>
+<H3>Свежие вакансии</H3>
+<DIV id=ruac15></DIV>
+<SCRIPT type=text/javascript src="C%23%20WebBrowser%20-%20такой%20простой%20и%20такой%20сложный_%20Часть%202%20FAQ%20-%20Microsoft%20User%20Group%20Community_files/js.js"></SCRIPT>
+</DIV></SECTION><FOOTER>
+<TABLE id=footerTable>
+<TBODY>
+<TR>
+<TD>
+<UL>
+<LI><A href="http://msugvnua000.web710.discountasp.net/About">О проекте</A> 
+<LI><A href="http://msugvnua000.web710.discountasp.net/Advertisement">Реклама на сайте</A> 
+<LI><A href="http://msugvnua000.web710.discountasp.net/Partnership">Партнерство</A> 
+<LI><A href="http://msugvnua000.web710.discountasp.net/Contacts">Контактная информация</A></LI></UL>
+<P class=copyrights>При использовании материалов сайта обязательным условием является наличие гиперссылки на страницу расположения исходной статьи с указанием Microsoft User Group Community.</P>
+<P class=copyrights>© 2008-2012 Microsoft User Group Community</P>
+<P><!--Rating@Mail.ru counter-->
+<SCRIPT language=javascript type=text/javascript><!--
+                        d = document; var a = ''; a += ';r=' + escape(d.referrer); js = 10;//--></SCRIPT>
+
+<SCRIPT language=javascript1.1 type=text/javascript><!--
+                        a += ';j=' + navigator.javaEnabled(); js = 11;//--></SCRIPT>
+
+<SCRIPT language=javascript1.2 type=text/javascript><!--
+                        s = screen; a += ';s=' + s.width + '*' + s.height;
+                        a += ';d=' + (s.colorDepth ? s.colorDepth : s.pixelDepth); js = 12;//--></SCRIPT>
+
+<SCRIPT language=javascript1.3 type=text/javascript><!--
+                        js = 13;//--></SCRIPT>
+
+<SCRIPT language=javascript type=text/javascript><!--
+                        d.write('<a href="http://top.mail.ru/jump?from=1539179" target="_top">' +
+'<img src="http://dc.c7.b7.a1.top.mail.ru/counter?id=1539179;t=49;js=' + js +
+a + ';rand=' + Math.random() + '" alt="Рейтинг@Mail.ru" border="0" ' +
+'height="31" width="88"><\/a>'); if (11 < js) d.write('<' + '!-- ');//--></SCRIPT>
+<NOSCRIPT></NOSCRIPT>
+<SCRIPT language=javascript type=text/javascript><!--
+                        if (11 < js) d.write('--' + '>');//--></SCRIPT>
+<!--// Rating@Mail.ru counter--></P>
+<P><!-- 31e2d170 --></P></TD>
+<TD>
+<DIV>
+<H2>Новости</H2>
+<P class=event><SPAN>17.01.2013</SPAN><BR><A title="Онлайн-конференция по тестированию ПО ConfeT&amp;QA" href="http://msugvnua000.web710.discountasp.net/Posts/Details/4789">Онлайн-конференция по тестированию ПО ConfeT&amp;QA</A> </P>
+<P class=event><SPAN>04.12.2012</SPAN><BR><A title="Бесплатное программное обеспечение от компании Microsoft" href="http://msugvnua000.web710.discountasp.net/Posts/Details/4788">Бесплатное программное обеспечение от компании Microsoft</A> </P>
+<P class=event><SPAN>22.11.2012</SPAN><BR><A title="Teamlab Office готов соперничать с Microsoft Office 365" href="http://msugvnua000.web710.discountasp.net/Posts/Details/4787">Teamlab Office готов соперничать с Microsoft Office 365</A> </P>
+<P class=event><SPAN>17.10.2012</SPAN><BR><A title="Реєстрацію на освітню ІТ- конференцію «UniversITy-2012» розпочато!" href="http://msugvnua000.web710.discountasp.net/Posts/Details/4786">Реєстрацію на освітню ІТ- конференцію «UniversITy-2012» розпочато!</A> </P>
+<P class=event><SPAN>17.10.2012</SPAN><BR><A title="Визначено переможців полуфіналу студентської першості світу з програмування" href="http://msugvnua000.web710.discountasp.net/Posts/Details/4785">Визначено переможців полуфіналу студентської першості світу з програмування</A> </P></DIV></TD>
+<TD>
+<P style="PADDING-LEFT: 20px">
+<DIV id=fb-root></DIV>
+<SCRIPT>    (function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1&appId=184276438295080";
+    fjs.parentNode.insertBefore(js, fjs);
+} (document, 'script', 'facebook-jssdk'));</SCRIPT>
+
+<DIV class=fb-like-box data-href="http://www.facebook.com/msugvnua" data-width="300" data-show-faces="true" data-stream="false" data-header="false"></DIV>
+<P></P></TD></TR></TBODY></TABLE></FOOTER></DIV></BODY>

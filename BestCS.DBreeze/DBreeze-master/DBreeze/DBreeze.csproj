@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5C425A2A-5717-4D1B-9949-9C90785B6C57}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DBreeze</RootNamespace>
+    <AssemblyName>BestCS.DBreeze</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <NoWin32Manifest>False</NoWin32Manifest>
+    <NoStdLib>False</NoStdLib>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NET40</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>PdbOnly</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NET40</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\BestCS.DBreeze.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>signature.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <BaseAddress>4194304</BaseAddress>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataTypes\DbMJSON.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataTypes\Row.cs" />
+    <Compile Include="DataTypes\DbCustomSerializer.cs" />
+    <Compile Include="Engine\DBreezeConfiguration.cs" />
+    <Compile Include="Engine\DBreezeRemoteEngine.cs" />
+    <Compile Include="LianaTrie\NestedTables\NestedTable.cs" />
+    <Compile Include="LianaTrie\NestedTables\NestedTableInternal.cs" />
+    <Compile Include="DataTypes\DbAscii.cs" />
+    <Compile Include="DataTypes\DataTypesConvertor.cs" />
+    <Compile Include="LianaTrie\NestedTables\NestedTableStorage.cs" />
+    <Compile Include="LianaTrie\NestedTables\NestedTablesCoordinator.cs" />
+    <Compile Include="SchemeInternal\Scheme.CachedTableNames.cs" />
+    <Compile Include="SchemeInternal\Sheme.OpenTable.cs" />
+    <Compile Include="SchemeInternal\Sheme.UserTable.cs" />
+    <Compile Include="DataTypes\DbXML.cs" />
+    <Compile Include="DataTypes\IDBConvertable.cs" />
+    <Compile Include="DataTypes\DbUnicode.cs" />
+    <Compile Include="DataTypes\DbUTF8.cs" />
+    <Compile Include="Engine\Scheme.cs" />
+    <Compile Include="Exceptions\DBreezeException.cs" />
+    <Compile Include="Exceptions\TableNotOperableException.cs" />
+    <Compile Include="Diagnostic\SpeedStatistic.cs" />
+    <Compile Include="Storage\RemoteInstance\IRemoteInstanceCommunicator.cs" />
+    <Compile Include="Storage\RemoteInstance\RemoteInstanceCommander.cs" />
+    <Compile Include="Storage\RemoteInstance\RemoteTable.cs" />
+    <Compile Include="Storage\RemoteInstance\RemoteTablesHandler.cs" />
+    <Compile Include="Storage\RISR.cs" />
+    <Compile Include="Transactions\TransactionTablesLocker.cs" />
+    <Compile Include="Storage\Backup\Backup.cs" />
+    <Compile Include="Storage\Backup\BackupRestorer.cs" />
+    <Compile Include="Storage\MSR.cs" />
+    <Compile Include="Storage\FSR.cs" />
+    <Compile Include="Storage\IStorage.cs" />
+    <Compile Include="Storage\MemoryStorage.cs" />
+    <Compile Include="Storage\StorageLayer.cs" />
+    <Compile Include="Tries\ITrieRootNode.cs" />
+    <Compile Include="LianaTrie\Iterations\Backward.cs" />
+    <Compile Include="LianaTrie\Iterations\Forward.cs" />
+    <Compile Include="LianaTrie\LTrieGenerationMap.cs" />
+    <Compile Include="LianaTrie\LTrieGenerationNode.cs" />
+    <Compile Include="LianaTrie\LianaTrie.cs" />
+    <Compile Include="LianaTrie\LTrieKid.cs" />
+    <Compile Include="LianaTrie\LTrieKidsInNode.cs" />
+    <Compile Include="LianaTrie\LTrieRootNode.cs" />
+    <Compile Include="LianaTrie\LTrieSetupKidResult.cs" />
+    <Compile Include="LianaTrie\LTrieRow.cs" />
+    <Compile Include="LianaTrie\LTrieWriteCache.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Storage\TrieSettings.cs" />
+    <Compile Include="Engine\DBreezeEngine.cs" />
+    <Compile Include="Transactions\ITransactable.cs" />
+    <Compile Include="Transactions\Transaction.cs" />
+    <Compile Include="Transactions\TransactionsCoordinator.cs" />
+    <Compile Include="Transactions\TransactionsJournal.cs" />
+    <Compile Include="Transactions\TransactionUnit.cs" />
+    <Compile Include="Tries\ITrie.cs" />
+    <Compile Include="Utils\AsyncOperations.cs" />
+    <Compile Include="Utils\BloomFilter.cs" />
+    <Compile Include="Utils\BytesProcessing.cs" />
+    <Compile Include="Utils\CustomSerializator.cs" />
+    <Compile Include="Utils\DbReaderWriterLock.cs" />
+    <Compile Include="Utils\DbReaderWriterSpinLock.cs" />
+    <Compile Include="Utils\DbThreadsGator.cs" />
+    <Compile Include="Utils\MJsonSerializator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utils\MurMurHash.cs" />
+    <Compile Include="Utils\StringProcessing.cs" />
+    <Compile Include="Utils\XmlSerializator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="!!!Assemblies.txt" />
+    <Content Include="!!!ReadMe.txt" />
+    <Content Include="!!!ToDo.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.manifest" />
+    <None Include="signature.snk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

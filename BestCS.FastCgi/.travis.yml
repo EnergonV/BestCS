@@ -1,0 +1,9 @@
+language: c
+ 
+install:
+  - sudo sh -c "echo 'deb http://debian.meebey.net/experimental/mono /' >> /etc/apt/sources.list.d/mono-opt.list"
+  - sudo apt-get update
+  - sudo apt-get --force-yes install mono-devel mono-xbuild
+  
+script:
+  - xbuild CI.proj
